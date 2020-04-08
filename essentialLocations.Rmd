@@ -1,0 +1,46 @@
+---
+title: "Locations of Essential Goods & Services"
+author: "Sumedh"
+date: "4/8/2020"
+output:
+html_document: default
+pdf_document: default
+---
+
+
+## This page shows the locations of the Stores & Markets in Mumbai, India open during the LockDown Period of the CoronaVirus(COVID-19).
+
+To check out the code and documentation for this webpage, check out this link to my gitHub repo : <https://github.com/Sumedh100/DataProducts>.
+
+Note: Due to the lock-down, the number majority of the markets are close and thus only few points are shown on the map.
+
+
+```{r echo=FALSE, eval=TRUE, warning = FALSE}
+library(leaflet)
+
+essIcon <- makeIcon(iconUrl = "https://image.flaticon.com/icons/svg/213/213063.svg", iconWidth = 31*215/230, iconHeight = 31,iconAnchorX=31*215/230/2,iconAnchorY = 16)
+
+suppressWarnings(set.seed(2020-04-08))
+
+lat <- c(19.083537,19.081868,19.116335,19.090541,19.087836,19.047773,19.199946,19.048623,19.046747,19.087757,19.084867,19.063100)
+long <- c(72.891991,72.858102,72.898158,72.889231,72.889966,72.861377,72.839207,72.896476,72.895349,72.912750,72.912621,72.851802)
+
+mumbaiLatLong <- data.frame(lat, long)
+
+my_map <- mumbaiLatLong %>% leaflet(options = leafletOptions(minZoom = 5, maxZoom = 16)) %>% addTiles() %>% setView(lat = 19.076090, lng = 72.877426, zoom = 12) %>% addMarkers(icon = essIcon, clusterOptions = markerClusterOptions())
+
+my_map
+
+```
+
+
+### *timings* : **9:30 am to 12:30pm** & **4:30 pm to 6:30 pm**
+
+
+
+
+To check out the code and documentation for this webpage, check out this link to my gitHub repo : <https://github.com/Sumedh100/DataProducts>.
+
+Note: Due to the lock-down, the number majority of the markets are close and thus only few points are shown on the map.
+
+Stay home, stay safe.
